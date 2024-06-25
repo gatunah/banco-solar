@@ -13,5 +13,5 @@
 3. En el proyecto modificar parámetros de conexión a la BD según sea tú caso.
 La Base de datos cuenta con varios datos predeterminados para poder realizar pruebas.
 
-##Ejecución
+## Ejecución
 1. En el terminal del proyecto, ejecutar node server.
