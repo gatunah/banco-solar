@@ -1,0 +1,42 @@
+-- Borrar la Base de Datos si Existe
+DROP DATABASE IF EXISTS bancosolar;
+
+-- Crear la Base de Datos
+CREATE DATABASE bancosolar;
+
+-- Conectarse a la Base de Datos
+\c bancosolar;
+
+-- Crear la Tabla Usuarios
+CREATE TABLE usuarios (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(50),
+    balance FLOAT CHECK (balance >= 0)
+);
+
+-- Crear la Tabla Transferencias
+CREATE TABLE transferencias (
+    id SERIAL PRIMARY KEY,
+    emisor INT,
+    receptor INT,
+    monto FLOAT,
+    fecha TIMESTAMP,
+    FOREIGN KEY (emisor) REFERENCES usuarios(id) ON DELETE CASCADE,
+    FOREIGN KEY (receptor) REFERENCES usuarios(id) ON DELETE CASCADE
+);
+
+-- Insertar Datos en la Tabla Usuarios
+INSERT INTO usuarios (nombre, balance) VALUES
+('Juan Perez', 100000),
+('Ana Garcia', 500000),
+('Luis Fernandez', 220000),
+('Maria Rodriguez', 65000),
+('Carlos Sanchez', 36400000);
+
+-- Insertar Datos en la Tabla Transferencias
+INSERT INTO transferencias (emisor, receptor, monto, fecha) VALUES
+(1, 2, 10000, '2024-06-20 14:30:00'),
+(3, 4, 20000, '2024-06-21 09:15:00'),
+(2, 5, 50000, '2024-06-21 10:00:00'),
+(5, 1, 30000, '2024-06-21 12:45:00'),
+(4, 3, 4400, '2024-06-21 14:00:00');
