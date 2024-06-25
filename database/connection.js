@@ -8,8 +8,8 @@ const pool = new Pool({
   password: "admin",
   port: 5432,
   max: 20,
-  idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 2000,
+  idleTimeoutMillis: 40000,
+  connectionTimeoutMillis: 3000,
 });
 
 //TODOS LOS USUARIOS
